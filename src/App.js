@@ -5,12 +5,15 @@ import Footer from './Footer.js';
 import './App.css';
 
 class App extends React.Component {
+  
   render() {
      return (
     <>
+
       <Header/>
       <Main/>
       <Footer/>
+
     </>
    );
  }
