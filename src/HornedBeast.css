@@ -1,0 +1,30 @@
+
+article h2 {
+  font-size: 3vw;
+  display: inline;
+}
+
+article img {
+  margin: auto;
+  height: 27vw;
+  width: 30vw;
+  padding: 1vw;
+}
+
+article p {
+  margin: auto;
+  margin-bottom: .5 rem;
+}
+
+article p:last-of-type {
+  padding-left: 1rem;
+  cursor: pointer;
+}
+
+article p:last-of-type:hover {
+  color: purple;
+}
+
+.article-button {
+  margin: .2rem .1vw;
+}
