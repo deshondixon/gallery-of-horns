@@ -6,7 +6,6 @@ import Modal from 'react-bootstrap/Modal'
 import data from './data.json';
 import './App.css';
 import { ModalBody, ModalHeader } from 'react-bootstrap';
-import { toHaveDescription } from '@testing-library/jest-dom/dist/matchers.js';
 
 class App extends React.Component {
   constructor(props) {
