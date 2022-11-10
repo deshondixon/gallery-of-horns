@@ -32,7 +32,7 @@ class HornedBeast extends React.Component {
           alt={this.props.alt} 
           title={this.props.title}
           />
-          <p></p>
+          <p onClick={this.handleDescriptionClick}></p>
       </article> 
       );
   }

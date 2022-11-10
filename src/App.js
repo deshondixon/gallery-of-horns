@@ -1,64 +1,54 @@
-import React from 'react';
-import Header from './Header.js';
-import Main from './Main.js';
-import Footer from './Footer.js';
-import Modal from 'react-bootstrap/Modal'
-import data from './data.json';
-import './App.css';
-import { ModalBody, ModalHeader } from 'react-bootstrap';
-import { toHaveDescription } from '@testing-library/jest-dom/dist/matchers.js';
+import React from "react";
+import Header from "./Header.js";
+import Main from "./Main.js";
+import Footer from "./Footer.js";
+import SelectedBeast from "./SelectedBeast.js";
+import data from "./data.json";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isModalShown: false,
-      title: '',
-      description: ''
+      beasts: data,
+      selectedBeast: null,
     };
-  };
+  }
 
   handleCloseModal = () => {
     this.setState({
-      isModalShown: false
+      isModalShown: false,
     });
   };
 
-  handleOpenModal = (title, description) => {
-    console.log(title);
-    console.log(description);
+  handleOpenModal = (beast) => {
     this.setState({
       isModalShown: true,
-      title: title,
-      description: description
+      selectedBeast: beast
     });
   };
-  
+
   render() {
-     return (
-    <>
+    return (
+      <>
+        {this.state.selectedBeast && (
+          <SelectedBeast
+            showModal={this.state.showModal}
+            handleCloseModal={this.handleCloseModal}
+            selectedBeast={this.state.selectedBeast}
+          />
+        )}
 
-      <Header/>
-      <Main
-        handleOpenModal={this.handleOpenModal}
-        data={data}
-      />
-      <Footer/>
-      <Modal 
-        show={this.state.isModalShown} 
-        onHide={this.handleCloseModal}
-        >
-          <ModalHeader/>
-          <ModalBody/>
-        <Modal.Header closeButton>
-          <Modal.Title>{this.state.title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{this.state.description}</Modal.Body>
-        </Modal>
-
-    </>
-   )
- }
+        <Header />
+        <Main
+          handleOpenModal={this.handleOpenModal}
+          beasts={this.state.beasts}
+        />
+        <Footer/>
+      </>
+    );
+  }
 }
 
 export default App;
