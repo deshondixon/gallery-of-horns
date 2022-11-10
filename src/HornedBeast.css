@@ -2,32 +2,32 @@ article {
   border: 3.1px solid rgb(0, 0, 0); 
   padding: 0.09vw;
 }
-h2 {
+article h2 {
   font-size: 3vw;
   display: inline;
 }
 
-img {
+article img {
   margin: auto;
   height: 27vw;
   width: 30vw;
   padding: 1vw;
 }
 
-p {
+article p {
   margin: auto;
   margin-bottom: .5 rem;
 }
 
-p:last-of-type {
+article p:last-of-type {
   padding-left: 1rem;
   cursor: pointer;
 }
 
-p:last-of-type:hover {
+article p:last-of-type:hover {
   color: purple;
 }
 
-.button {
+.article-button {
   margin: .2rem .1vw;
 }

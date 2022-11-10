@@ -2,17 +2,18 @@ import React from "react";
 import Header from "./Header.js";
 import Main from "./Main.js";
 import Footer from "./Footer.js";
-import SelectedBeast from "./SelectedBeast.js";
+import Modal from "react-bootstrap/Modal";
 import data from "./data.json";
 import "./App.css";
+import { ModalBody, ModalHeader } from "react-bootstrap";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isModalShown: false,
-      beasts: data,
-      selectedBeast: null,
+      title: "",
+      description: "",
     };
   }
 
@@ -22,30 +23,30 @@ class App extends React.Component {
     });
   };
 
-  handleOpenModal = (beast) => {
+  handleOpenModal = (title, description) => {
+    console.log(title);
+    console.log(description);
     this.setState({
       isModalShown: true,
-      selectedBeast: beast
+      title: title,
+      description: description,
     });
   };
 
   render() {
     return (
       <>
-        {this.state.selectedBeast && (
-          <SelectedBeast
-            showModal={this.state.showModal}
-            handleCloseModal={this.handleCloseModal}
-            selectedBeast={this.state.selectedBeast}
-          />
-        )}
-
         <Header />
-        <Main
-          handleOpenModal={this.handleOpenModal}
-          beasts={this.state.beasts}
-        />
-        <Footer/>
+        <Main handleOpenModal={this.handleOpenModal} data={data} />
+        <Footer />
+        <Modal show={this.state.isModalShown} onHide={this.handleCloseModal}>
+          <ModalHeader />
+          <ModalBody />
+          <Modal.Header closeButton>
+            <Modal.Title>{this.state.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{this.state.description}</Modal.Body>
+        </Modal>
       </>
     );
   }
