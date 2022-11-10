@@ -16,10 +16,15 @@ class HornedBeast extends React.Component {
     });
   };
 
+  handleDescriptionClick=() => {
+    this.props.handleOpenModal(this.props.description);
+  }
+
   render() {
+    console.log(this.props);
     return (
       <article>
-        <h2>{this.props.title}</h2>
+        <h2 onClick={this.handleDescriptionClick}>{this.props.title}</h2>
         <p>{this.state.favorites} 💚 Favs</p>
         <Button onClick={this.handleFavs}>💚</Button>
         <img 
@@ -27,7 +32,7 @@ class HornedBeast extends React.Component {
           alt={this.props.alt} 
           title={this.props.title}
           />
-          <p>{this.props.description}</p>
+          <p></p>
       </article> 
       );
   }
