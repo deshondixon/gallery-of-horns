@@ -4,7 +4,7 @@ import Main from "./Main.js";
 import Footer from "./Footer.js";
 import SelectedBeast from "./SelectedBeast.js";
 import data from "./data.json";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 class App extends React.Component {
@@ -14,7 +14,7 @@ class App extends React.Component {
       beastData: data,
       isModalShown: false,
       selectedBeast: null,
-    }
+    };
   }
 
   handleCloseModal = () => {
@@ -26,28 +26,27 @@ class App extends React.Component {
   handleOpenModal = (beast) => {
     this.setState({
       isModalShown: true,
-      selectedBeast: beast
+      selectedBeast: beast,
     });
   };
 
   render() {
     return (
-    <>
-        <Header/>
-        <Main 
-        handleOpenModal={(this.handleOpenModal)} 
-        beastData={this.state.beastData} />
-      
-        { this.state.selectedBeast &&
-        <SelectedBeast
+      <>
+        <Header />
+        <Main
+          handleOpenModal={this.handleOpenModal}
+          beastData={this.state.beastData}
+        />
+
+        {this.state.selectedBeast && (
+          <SelectedBeast
             show={this.state.isModalShown}
             onHide={this.handleCloseModal}
             selectedBeast={this.state.selectedBeast}
-      
-          
           />
-        }
-        <Footer/>
+        )}
+        <Footer />
       </>
     );
   }
