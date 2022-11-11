@@ -4,19 +4,28 @@ import "./Main.css";
 
 class Main extends React.Component {
   render() {
-    let beastArray = this.props.data.map((beast, idx) => {
-      return (
-        <HornedBeast
+    return(
+    <>
+    <main>
+      {
+    this.props.beastData.map((beast, idx) => 
+    (
+      <HornedBeast
           imageURL={beast.image_url}
           title={beast.title}
           description={beast.description}
           key={idx}
-          handleOpenModal={this.props.handleOpenModal}
+          handleOpenModal={() => this.props.handleOpenModal(beast)}
+          id={beast._id}
+          horns={beast.keyword}
         />
-      );
-    });
-    return <main>{beastArray}</main>;
-  }
-}
+    )
+    )
+    }
+     </main>
+  </>
+  )
+  };
+};
 
 export default Main;
