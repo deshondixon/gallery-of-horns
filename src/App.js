@@ -2,18 +2,18 @@ import React from "react";
 import Header from "./Header.js";
 import Main from "./Main.js";
 import Footer from "./Footer.js";
-import Modal from "react-bootstrap/Modal";
+import SelectedBeast from "./SelectedBeast.js";
 import data from "./data.json";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { ModalBody, ModalHeader } from "react-bootstrap";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      beastData: data,
       isModalShown: false,
-      title: "",
-      description: "",
+      selectedBeast: null,
     };
   }
 
@@ -23,13 +23,10 @@ class App extends React.Component {
     });
   };
 
-  handleOpenModal = (title, description) => {
-    console.log(title);
-    console.log(description);
+  handleOpenModal = (beast) => {
     this.setState({
       isModalShown: true,
-      title: title,
-      description: description,
+      selectedBeast: beast,
     });
   };
 
@@ -37,16 +34,19 @@ class App extends React.Component {
     return (
       <>
         <Header />
-        <Main handleOpenModal={this.handleOpenModal} data={data} />
+        <Main
+          handleOpenModal={this.handleOpenModal}
+          beastData={this.state.beastData}
+        />
+
+        {this.state.selectedBeast && (
+          <SelectedBeast
+            show={this.state.isModalShown}
+            onHide={this.handleCloseModal}
+            selectedBeast={this.state.selectedBeast}
+          />
+        )}
         <Footer />
-        <Modal show={this.state.isModalShown} onHide={this.handleCloseModal}>
-          <ModalHeader />
-          <ModalBody />
-          <Modal.Header closeButton>
-            <Modal.Title>{this.state.title}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>{this.state.description}</Modal.Body>
-        </Modal>
       </>
     );
   }

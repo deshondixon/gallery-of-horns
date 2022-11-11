@@ -1,10 +1,8 @@
-import React from 'react';
+import React from "react";
 
 class Footer extends React.Component {
   render() {
-    return (
-      <footer>&copy; DeShon Dixon 2022</footer>
-    )
+    return <footer>&copy; DeShon Dixon 2022</footer>;
   }
 }
 
