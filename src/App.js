@@ -17,6 +17,15 @@ class App extends React.Component {
     };
   }
 
+  // handleFilter = (event) => {
+  //   if (event.target.value !== 'Number of Horns') {
+  //   let newData = data.filter(beast => beast.horns === parseInt(event.target.value));
+  //   this.setState({beasts: newData});
+  // } else {
+  //   this.setState({beasts:data});
+  // }
+  // }
+
   handleCloseModal = () => {
     this.setState({
       isModalShown: false,
@@ -37,6 +46,7 @@ class App extends React.Component {
         <Main
           handleOpenModal={this.handleOpenModal}
           beastData={this.state.beastData}
+          //beasts={this.state.data}
         />
 
         {this.state.selectedBeast && (
