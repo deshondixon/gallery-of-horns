@@ -5,7 +5,7 @@ import Footer from "./Footer.js";
 import SelectedBeast from "./SelectedBeast.js";
 import data from "./data.json";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "./App.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +16,18 @@ class App extends React.Component {
       selectedBeast: null,
     };
   }
+
+  handleFilter = (event) => {
+    console.log(event.target.value);
+    if (event.target.value !== "Search of 🦄") {
+      let newData = data.filter(
+        (beast) => beast.horns === parseInt(event.target.value)
+      );
+      this.setState({ beastData: newData });
+    } else {
+      this.setState({ beastData: data });
+    }
+  };
 
   handleCloseModal = () => {
     this.setState({
@@ -33,12 +45,6 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Header />
-        <Main
-          handleOpenModal={this.handleOpenModal}
-          beastData={this.state.beastData}
-        />
-
         {this.state.selectedBeast && (
           <SelectedBeast
             show={this.state.isModalShown}
@@ -46,6 +52,13 @@ class App extends React.Component {
             selectedBeast={this.state.selectedBeast}
           />
         )}
+        <Header />
+        <Main
+          handleOpenModal={this.handleOpenModal}
+          beastData={this.state.beastData}
+          beasts={this.state.data}
+          filter={this.handleFilter}
+        />
         <Footer />
       </>
     );

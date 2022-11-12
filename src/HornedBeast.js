@@ -10,7 +10,7 @@ class HornedBeast extends React.Component {
     };
   }
 
-  handleFavs = () => {
+  handleFavorites = () => {
     this.setState({
       favorites: this.state.favorites + 1,
     });
@@ -28,9 +28,12 @@ class HornedBeast extends React.Component {
     return (
       <article>
         <h2 onClick={this.handleDescriptionClick}>{this.props.title}</h2>
-        <p>{this.state.favorites} 💚 Favs</p>
-        <Button onClick={this.handleFavs}>💚</Button>
+        <p onClick={this.handleDescriptionClick}>
+          {this.state.favorites} 🖤 Favorites
+        </p>
+        <Button onClick={this.handleFavorites}>🖤</Button>
         <img
+          onClick={this.handleDescriptionClick}
           src={this.props.imageURL}
           alt={this.props.alt}
           title={this.props.title}
