@@ -19,7 +19,7 @@ class App extends React.Component {
 
   handleFilter = (event) => {
     console.log(event.target.value);
-    if (event.target.value !== "Search of 🦄") {
+    if (event.target.value !== "Search 🦄") {
       let newData = data.filter(
         (beast) => beast.horns === parseInt(event.target.value)
       );
