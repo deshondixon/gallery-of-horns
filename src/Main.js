@@ -13,7 +13,7 @@ class Main extends React.Component {
           description={beast.description}
           key={idx}
           handleOpenModal={() => this.props.handleOpenModal(beast)}
-          id={beast._id}
+          _id={beast._id}
           horns={beast.keyword}
         />
       );
